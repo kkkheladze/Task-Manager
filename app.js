@@ -4,13 +4,13 @@ const app = express();
 const connectDB = require("./db/connect");
 require("dotenv").config(process.env.MONGO_URI);
 
-// Middleware
-
-// Routes
 const tasks = require("./routes/tasks");
 
+// Middleware
 app.use(express.json());
+app.use(express.static(__dirname + "/public"));
 
+// Routes
 app.use("/api/v1/tasks", tasks);
 
 (async () => {
