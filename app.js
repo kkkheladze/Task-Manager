@@ -1,10 +1,12 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
 
-const port = 3000
+// Routes
+const tasks = require("./routes/tasks");
 
-app.get('/hello', (req,res)=>{
-    res.send('TaskManagerApp')
-} )
+app.use(express.json());
 
-app.listen(port, () =>console.log(`Listening to ${port}`))
+app.use("/api/v1/tasks", tasks);
+
+const port = 3000;
+app.listen(port, () => console.log(`Listening to ${port}`));
